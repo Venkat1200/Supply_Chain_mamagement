@@ -12,9 +12,13 @@
  * limitations under the License.
  */
 
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
+import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { DataService } from './data.service';
+import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 import { CommodityComponent } from './Commodity/Commodity.component';
@@ -24,6 +28,8 @@ import { ProjectComponent } from './Project/Project.component';
 import { TradeComponent } from './Trade/Trade.component';
 
 import { SupplierComponent } from './Supplier/Supplier.component';
+import { AccountingComponent } from './Accounting/Accounting.component';
+import { FinancingSourcesComponent } from './FinancingSources/FinancingSources.component';
 import { ExtraPartnersComponent } from './ExtraPartners/ExtraPartners.component';
 import { ExteriorCompanyComponent } from './ExteriorCompany/ExteriorCompany.component';
 import { interiorCompanyComponent } from './interiorCompany/interiorCompany.component';
@@ -42,36 +48,45 @@ import { ChangeStateToClosureComponent } from './ChangeStateToClosure/ChangeStat
 import { CreateTradeComponent } from './CreateTrade/CreateTrade.component';
 import { AssignproductComponent } from './Assignproduct/Assignproduct.component';
 
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'Commodity', component: CommodityComponent },
-  { path: 'PO', component: POComponent },
-  { path: 'Product', component: ProductComponent },
-  { path: 'Project', component: ProjectComponent },
-  { path: 'Trade', component: TradeComponent },
-  { path: 'Supplier', component: SupplierComponent },
-  { path: 'ExtraPartners', component: ExtraPartnersComponent },
-  { path: 'ExteriorCompany', component: ExteriorCompanyComponent },
-  { path: 'interiorCompany', component: interiorCompanyComponent },
-  { path: 'Constructor', component: ConstructorComponent },
-  { path: 'BuldingManager', component: BuldingManagerComponent },
-  { path: 'SiteManager', component: SiteManagerComponent },
-  { path: 'InitiatePO', component: InitiatePOComponent },
-  { path: 'TransferCommodity', component: TransferCommodityComponent },
-  { path: 'SetupDemo', component: SetupDemoComponent },
-  { path: 'ChangeStateToInitiation', component: ChangeStateToInitiationComponent },
-  { path: 'ChangeStateToPlanning', component: ChangeStateToPlanningComponent },
-  { path: 'ChangeStateToExecution', component: ChangeStateToExecutionComponent },
-  { path: 'ChangeStateToMonitoring', component: ChangeStateToMonitoringComponent },
-  { path: 'ChangeStateToClosure', component: ChangeStateToClosureComponent },
-  { path: 'CreateTrade', component: CreateTradeComponent },
-  { path: 'Assignproduct', component: AssignproductComponent },
-  { path: '**', redirectTo: '' }
-];
-
-@NgModule({
- imports: [RouterModule.forRoot(routes)],
- exports: [RouterModule],
- providers: []
+  @NgModule({
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    CommodityComponent,
+    POComponent,
+    ProductComponent,
+    ProjectComponent,
+    TradeComponent,
+    SupplierComponent,
+    AccountingComponent,
+    FinancingSourcesComponent,
+    ExtraPartnersComponent,
+    ExteriorCompanyComponent,
+    interiorCompanyComponent,
+    ConstructorComponent,
+    BuldingManagerComponent,
+    SiteManagerComponent,
+    InitiatePOComponent,
+    TransferCommodityComponent,
+    SetupDemoComponent,
+    ChangeStateToInitiationComponent,
+    ChangeStateToPlanningComponent,
+    ChangeStateToExecutionComponent,
+    ChangeStateToMonitoringComponent,
+    ChangeStateToClosureComponent,
+    CreateTradeComponent,
+    AssignproductComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule,
+    AppRoutingModule
+  ],
+  providers: [
+    DataService
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppRoutingModule { }
+export class AppModule { }

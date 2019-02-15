@@ -17,37 +17,37 @@ import { ExpectedConditions, browser, element, by } from 'protractor';
 import {} from 'jasmine';
 
 
-describe('Starting tests for SupplyChain', function() {
+describe('Starting tests for FrontEnd', function() {
   let page: AngularTestPage;
 
   beforeEach(() => {
     page = new AngularTestPage();
   });
 
-  it('website title should be SupplyChain', () => {
+  it('website title should be FrontEnd', () => {
     page.navigateTo('/');
     return browser.getTitle().then((result)=>{
-      expect(result).toBe('SupplyChain');
+      expect(result).toBe('FrontEnd');
     })
   });
 
-  it('network-name should be supply-chain-construction@0.0.3',() => {
+  it('network-name should be supply-chain-management@0.0.4',() => {
     element(by.css('.network-name')).getWebElement()
     .then((webElement) => {
       return webElement.getText();
     })
     .then((txt) => {
-      expect(txt).toBe('supply-chain-construction@0.0.3.bna');
+      expect(txt).toBe('supply-chain-management@0.0.4.bna');
     });
   });
 
-  it('navbar-brand should be SupplyChain',() => {
+  it('navbar-brand should be FrontEnd',() => {
     element(by.css('.navbar-brand')).getWebElement()
     .then((webElement) => {
       return webElement.getText();
     })
     .then((txt) => {
-      expect(txt).toBe('SupplyChain');
+      expect(txt).toBe('FrontEnd');
     });
   });
 
@@ -157,6 +157,42 @@ describe('Starting tests for SupplyChain', function() {
 
     it('Supplier table should have 4 columns',() => {
       page.navigateTo('/Supplier');
+      element.all(by.css('.thead-cols th')).then(function(arr) {
+        expect(arr.length).toEqual(4); // Addition of 1 for 'Action' column
+      });
+    });
+  
+    it('Accounting component should be loadable',() => {
+      page.navigateTo('/Accounting');
+      browser.findElement(by.id('participantName'))
+      .then((participantName) => {
+        return participantName.getText();
+      })
+      .then((txt) => {
+        expect(txt).toBe('Accounting');
+      });
+    });
+
+    it('Accounting table should have 4 columns',() => {
+      page.navigateTo('/Accounting');
+      element.all(by.css('.thead-cols th')).then(function(arr) {
+        expect(arr.length).toEqual(4); // Addition of 1 for 'Action' column
+      });
+    });
+  
+    it('FinancingSources component should be loadable',() => {
+      page.navigateTo('/FinancingSources');
+      browser.findElement(by.id('participantName'))
+      .then((participantName) => {
+        return participantName.getText();
+      })
+      .then((txt) => {
+        expect(txt).toBe('FinancingSources');
+      });
+    });
+
+    it('FinancingSources table should have 4 columns',() => {
+      page.navigateTo('/FinancingSources');
       element.all(by.css('.thead-cols th')).then(function(arr) {
         expect(arr.length).toEqual(4); // Addition of 1 for 'Action' column
       });

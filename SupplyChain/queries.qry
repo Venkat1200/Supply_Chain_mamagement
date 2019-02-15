@@ -1,0 +1,28 @@
+// query for all projects
+query Allproject {
+  description: "Returns all projects in the registry"
+  statement:  
+    SELECT  org.iff.supplychain.project.Project
+}
+
+// Uses the Limit and Skip
+// All products
+query AllProducts {
+  description: "All products returned with certain limit"
+  statement:  
+    SELECT  org.iff.supplychain.product.Product
+      LIMIT  _$limit
+        SKIP   _$skip
+}
+
+query AllCommodity {
+  description: "Returns all Commodities in the registry"
+  statement:  
+    SELECT  org.iff.supplychain.network.Commodity
+}
+
+query AllPUrchaseOrder {
+  description: "Returns all Purchases in the registry"
+  statement:  
+    SELECT  org.iff.supplychain.network.PO
+}

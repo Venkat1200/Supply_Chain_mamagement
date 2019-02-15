@@ -15,7 +15,7 @@
 function getTarget() {
     if (process.env.REST_SERVER_URLS) {
         const restServerURLs = JSON.parse(process.env.REST_SERVER_URLS);
-        const restServerURL = restServerURLs['supply-chain-construction'];
+        const restServerURL = restServerURLs['supply-chain-management'];
         if (restServerURL) {
             return restServerURL;
         }

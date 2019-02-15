@@ -1,0 +1,14 @@
+namespace  org.iff.supplychain.product
+
+asset Product identified by productid {
+  o String productid
+  o String productName
+  o String category
+  o Price price optional
+}
+
+concept Price {
+  o Integer vat_rate
+  o Integer price_netto
+  o Integer price_butto
+}

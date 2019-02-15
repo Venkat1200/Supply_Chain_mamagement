@@ -1,0 +1,30 @@
+composer network upgrade -c PeerAdmin@hlfv1 -n  supply-chain-construction  -V 0.0.3
+
+composer network install -a supply-chain-management.bna -c PeerAdmin@hl
+
+rule SupplychainNetworkAdminPermissionSystem {
+  description: "can READ the system registries"
+  participant: "ANY"
+  operation: READ
+  resource: "org.hyperledger.composer.system.**"
+  action: ALLOW  
+}
+
+// #1 Allow the 'System Network Admin' to carry out Identities management
+//    and Network operations
+rule NetworkControlPermission {
+  description:  "give admin ALL access to system resources"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.*"
+  action: ALLOW  
+}
+rule ParticipantRegistryControlPermission {
+  description:  "give admin ALL access to network participant types"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "org.iff.supplychain.network.*"
+  action: ALLOW  
+}
+
+composer archive create -t dir -n .

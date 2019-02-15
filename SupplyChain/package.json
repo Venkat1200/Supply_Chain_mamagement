@@ -1,67 +1,36 @@
 {
-  "name": "SupplyChain",
-  "description": "supplychain management with blockchain",
-  "version": "0.0.1",
-  "author": "Aravind",
+  "engines": {
+    "composer": "^0.20.4"
+  },
+  "name": "supply-chain-management",
+  "version": "0.0.6",
+  "description": "implement a private Blockchain for construction industry of medium size",
+  "scripts": {
+    "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/supply-chain-construction.bna",
+    "pretest": "npm run lint",
+    "lint": "eslint .",
+    "test": "nyc mocha -t 0 test/*.js && cucumber-js"
+  },
+  "keywords": [
+    "composer",
+    "composer-network"
+  ],
+  "author": "arvnd",
   "email": "karriaravind@gmail.com",
   "license": "Apache-2.0",
-  "engines": {
-    "node": ">=8",
-    "npm": ">=5"
-  },
-  "bin": {
-    "SupplyChain": "app.js"
-  },
-  "scripts": {
-    "ng": "ng",
-    "build": "ng build",
-    "prepack": "npm run build",
-    "start": "ng serve --proxy-config proxy.conf.js --host 0.0.0.0",
-    "lint": "tslint \"src/**/*.ts\"",
-    "test": "ng test --watch false",
-    "pree2e": "webdriver-manager update --standalone false --gecko false",
-    "e2e": "protractor"
-  },
-  "private": true,
-  "dependencies": {
-    "@angular/common": "^4.0.0",
-    "@angular/compiler": "^4.0.0",
-    "@angular/core": "^4.0.0",
-    "@angular/forms": "^4.0.0",
-    "@angular/http": "^4.0.0",
-    "@angular/platform-browser": "^4.0.0",
-    "@angular/platform-browser-dynamic": "^4.0.0",
-    "@angular/router": "^4.0.0",
-    "bootstrap": "^3.3.7",
-    "cfenv": "^1.0.4",
-    "concurrently": "^3.1.0",
-    "config": "^1.21.0",
-    "core-js": "^2.4.1",
-    "express": "^4.16.3",
-    "http-proxy-middleware": "^0.18.0",
-    "jquery": "^3.2.1",
-    "rxjs": "^5.1.0",
-    "tether": "^1.4.0",
-    "zone.js": "^0.8.4"
-  },
   "devDependencies": {
-    "@angular/cli": "1.0.1",
-    "@angular/compiler-cli": "^4.0.0",
-    "@types/jasmine": "2.5.52",
-    "@types/node": "7.0.5",
-    "codelyzer": "~2.0.0",
-    "jasmine-core": "~2.5.2",
-    "jasmine-spec-reporter": "~3.2.0",
-    "karma": "~1.4.1",
-    "karma-chrome-launcher": "~2.0.0",
-    "karma-cli": "~1.0.1",
-    "karma-jasmine": "~1.1.0",
-    "karma-jasmine-html-reporter": "^0.2.2",
-    "karma-coverage-istanbul-reporter": "^0.2.0",
-    "protractor": "~5.1.0",
-    "sinon": "2.3.8",
-    "ts-node": "~2.0.0",
-    "tslint": "~4.5.0",
-    "typescript": "~2.2.0"
+    "composer-admin": "^0.20.4",
+    "composer-cli": "^0.20.4",
+    "composer-client": "^0.20.4",
+    "composer-common": "^0.20.4",
+    "composer-connector-embedded": "^0.20.4",
+    "composer-cucumber-steps": "^0.20.4",
+    "chai": "latest",
+    "chai-as-promised": "latest",
+    "cucumber": "^2.2.0",
+    "eslint": "latest",
+    "nyc": "latest",
+    "mkdirp": "latest",
+    "mocha": "latest"
   }
 }

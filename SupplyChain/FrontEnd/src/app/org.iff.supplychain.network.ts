@@ -54,6 +54,12 @@ import {Product} from './org.iff.supplychain.product';
    export class Supplier extends IFFparticipant {
       tradeId: string;
    }
+   export class Accounting extends IFFparticipant {
+      accountId: string;
+   }
+   export class FinancingSources extends IFFparticipant {
+      accountId: string;
+   }
    export class ExtraPartners extends IFFparticipant {
       tradeId: string;
    }

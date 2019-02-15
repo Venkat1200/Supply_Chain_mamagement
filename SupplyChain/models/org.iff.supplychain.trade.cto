@@ -1,0 +1,37 @@
+namespace  org.iff.supplychain.trade
+
+import  org.iff.supplychain.product.Product
+
+asset Trade identified by tradeId {
+  o String tradeId
+  o Integer quantity
+  o Route route
+  -->Product product optional
+}
+
+concept Route {
+  o   String    destination  regex=/[A-Z][A-Z][A-Z]/
+  o   DateTime  schedule  
+}
+
+transaction CreateTrade {
+  o String    quantity
+  o String    destination
+  o DateTime    schedule  
+}
+
+event TradeCreated {
+  o   String      tradeId
+}
+
+transaction Assignproduct {
+  o   String    tradeId
+  o   String    productid
+}
+
+// Event indicating that product was assigned
+event ProductAssigned {
+  o   String    tradeId
+  o   String    productid
+}
+

@@ -1,0 +1,29 @@
+namespace  org.iff.supplychain.project
+
+import  org.iff.supplychain.network.Commodity
+
+asset Project identified by projectId {
+  o String projectId
+  o String state
+  -->Commodity commodity optional
+}
+
+transaction ChangeStateToInitiation {
+  --> Project project
+}
+
+transaction ChangeStateToPlanning {
+  --> Project project
+}
+
+transaction ChangeStateToExecution {
+  --> Project project
+}
+
+transaction ChangeStateToMonitoring {
+  --> Project project
+}
+
+transaction ChangeStateToClosure {
+  --> Project project
+}
